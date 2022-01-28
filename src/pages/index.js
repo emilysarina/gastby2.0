@@ -1,32 +1,39 @@
-import * as React from "react"
-import {useState} from "react"
-import Header from "../components/header"
-import Form from "../components/Form"
+import * as React from 'react';
+import { useState } from 'react';
+import LondonData from '../components/LondonData';
+import NewYorkData from '../components/NewYorkData';
+import TokyoData from '../components/TokyoData';
 
+import { useStaticQuery, graphql } from 'gatsby';
 
 const IndexPage = () => {
-  const [state, setState] = useState("")
-  const [text, setText] = useState("")
-  function handleChange(e){
-    return setState(e.target.value)
+  const [value, setValue] = useState('');
+
+  // When dropdown is changed display different weather data
+
+  function handleChange(e) {
+    setValue(e.target.value);
   }
 
-  function handleClick(e){
-    e.preventDefault()
-    return setText("Cloudy")
-  }
   return (
-   <main>
-   <Header text="Weather App"/>
-   <Form buttonText='Search' inputText="Type City Here" 
-   handleChange={handleChange} 
-   handleClick={handleClick} 
-   />
-   <div>
-     {text}
-   </div>
+    <main>
+      <h1>Weather App</h1>
+      <select onChange={handleChange} name="cars" id="cars">
+        <option value="London">London</option>
+        <option value="New York">New York</option>
+        <option value="Tokyo">Tokyo</option>
+      </select>
+      {value === 'London' ? (
+        <LondonData />
+      ) : value === 'New York' ? (
+        <NewYorkData />
+      ) : value === 'Tokyo' ? (
+        <TokyoData />
+      ) : (
+        ''
+      )}
     </main>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

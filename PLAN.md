@@ -32,7 +32,8 @@ Handed down to Home Page aswell as Weather Page
 - Weather Page
   - Text (Weather data fetched from API)
 
-`type Data (name: "e.target.value") { Weather Information }`
+type Weather (name: "Miami") {
+Weather Information
 
 ## Differences between Gatsby and react app?
 
