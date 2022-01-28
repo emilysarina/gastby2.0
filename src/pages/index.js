@@ -15,17 +15,21 @@ const IndexPage = () => {
   }
 
   return (
-    <main>
+    <div>
       <h1>Weather App</h1>
-      <Link to="/london">London</Link>
-      <Link to="/tokyo">Tokyo</Link>
-      <Link to="/newyork">New York</Link>
-      <select onChange={handleChange} name="cars" id="cars">
-        <option value="">Select City</option>
-        <option value="London">London</option>
-        <option value="New York">New York</option>
-        <option value="Tokyo">Tokyo</option>
-      </select>
+      <div>
+        <Link to="/london">London</Link>
+        <Link to="/tokyo">Tokyo</Link>
+        <Link to="/newyork">New York</Link>
+      </div>
+      <div>
+        <select onChange={handleChange} name="cars" id="cars">
+          <option value="">Select City</option>
+          <option value="London">London</option>
+          <option value="New York">New York</option>
+          <option value="Tokyo">Tokyo</option>
+        </select>
+      </div>
       {value === 'London' ? (
         <LondonData />
       ) : value === 'New York' ? (
@@ -35,7 +39,7 @@ const IndexPage = () => {
       ) : (
         ''
       )}
-    </main>
+    </div>
   );
 };
 
