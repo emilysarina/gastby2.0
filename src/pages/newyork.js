@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
-function TokyoData() {
+function NewYorkData() {
   const data = useStaticQuery(graphql`
-    query Tokyo {
+    query NewYork {
       weather {
-        getCityByName(name: "Tokyo") {
+        getCityByName(name: "New York") {
           weather {
             temperature {
               min
@@ -28,7 +28,12 @@ function TokyoData() {
       }
     }
   `);
-  return <div>{data.weather.getCityByName.weather.temperature.min}</div>;
+  return <div>
+    <p>New York</p>
+    <p>Weather:{data.weather.getCityByName.weather.summary.description}</p>
+    <p>Temperature: {data.weather.getCityByName.weather.temperature.actual}</p>
+    <Link to="/">Home</Link>
+  </div>;
 }
 
-export default TokyoData;
+export default NewYorkData;
